@@ -1,0 +1,220 @@
+<UserControl x:Class="Awsd5.ClassicSample.ContainersCtrl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:local="clr-namespace:Awsd5.ClassicSample">
+  <UserControl.Resources>
+    <Style x:Key="PrimaryKeyElementStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="Padding" Value="4,4,2,4" />
+      <Setter Property="Background" Value="LightYellow" />
+      <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style x:Key="NonEditablePrimaryKeyElementStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="Padding" Value="4,4,2,4" />
+      <Setter Property="Background" Value="Gray" />
+      <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style x:Key="EditableElementStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="Padding" Value="4,4,2,4" />
+      <Setter Property="Background" Value="White" />
+      <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style x:Key="EditingElementStyle" TargetType="{x:Type TextBox}">
+      <Setter Property="Margin" Value="0,1,0,0" />
+      <Setter Property="Background" Value="White" />
+      <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style x:Key="CustomLabelButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" />
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <local:StaticDataProvider x:Key="myStaticDataProvider" ObjectType="{x:Type local:StaticBindings.StaticBindings}" PropertyName="Instance" />
+  </UserControl.Resources>
+  <Grid Margin="0,0,0,10">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="360" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="35" />
+      <RowDefinition Height="25" />
+      <RowDefinition />
+      <RowDefinition Height="30" />
+    </Grid.RowDefinitions>
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Content="Containers" />
+    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Search results" FontSize="14" Foreground="DimGray" HorizontalAlignment="Left" />
+    <DataGrid x:Name="gridView1" Grid.Row="2" Grid.Column="0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Results}" Background="White" HorizontalGridLinesBrush="Silver" VerticalGridLinesBrush="Silver" Margin="4,4,4,4" Padding="4,0,4,4" RowHeaderWidth="0">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Id" MinWidth="100" Binding="{Binding Path=Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" ElementStyle="{StaticResource NonEditablePrimaryKeyElementStyle}" />
+        <DataGridTextColumn Header="Number" MinWidth="100" Binding="{Binding Path=Number, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Doctara" MinWidth="100" Binding="{Binding Path=Doctara, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Docbrutto" MinWidth="100" Binding="{Binding Path=Docbrutto, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Docnetto" MinWidth="100" Binding="{Binding Path=Docnetto, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Weightcount" MinWidth="100" Binding="{Binding Path=Weightcount, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W1time" MinWidth="100" Binding="{Binding Path=W1time, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W1result" MinWidth="100" Binding="{Binding Path=W1result, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W1tara" MinWidth="100" Binding="{Binding Path=W1tara, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W1brutto" MinWidth="100" Binding="{Binding Path=W1brutto, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W1netto" MinWidth="100" Binding="{Binding Path=W1netto, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W1scale" MinWidth="100" Binding="{Binding Path=W1scale, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W2time" MinWidth="100" Binding="{Binding Path=W2time, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W2result" MinWidth="100" Binding="{Binding Path=W2result, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W2tara" MinWidth="100" Binding="{Binding Path=W2tara, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W2brutto" MinWidth="100" Binding="{Binding Path=W2brutto, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W2netto" MinWidth="100" Binding="{Binding Path=W2netto, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="W2scale" MinWidth="100" Binding="{Binding Path=W2scale, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Session" MinWidth="100" Binding="{Binding Path=Session, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridComboBoxColumn Header="Receiverid" MinWidth="100" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValueBinding="{Binding Receiverid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=RecieversList}" />
+        <DataGridComboBoxColumn Header="Senderid" MinWidth="100" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValueBinding="{Binding Senderid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=SendersList}" />
+        <DataGridComboBoxColumn Header="Productid" MinWidth="100" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValueBinding="{Binding Productid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=ProductsList}" />
+        <DataGridComboBoxColumn Header="Operationid" MinWidth="100" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValueBinding="{Binding Operationid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=OperationsList}" />
+        <DataGridTextColumn Header="Lotnumber" MinWidth="100" Binding="{Binding Path=Lotnumber, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridComboBoxColumn Header="Trailid" MinWidth="100" DisplayMemberPath="Id" SelectedValuePath="Id" SelectedValueBinding="{Binding Trailid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=TrailList}" />
+        <DataGridTextColumn Header="Minesid" MinWidth="100" Binding="{Binding Path=Minesid, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Zagrnumber" MinWidth="100" Binding="{Binding Path=Zagrnumber, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridComboBoxColumn Header="Returnid" MinWidth="100" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValueBinding="{Binding Returnid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=RreturnList}" />
+        <DataGridComboBoxColumn Header="Userid" MinWidth="100" DisplayMemberPath="Firstname" SelectedValuePath="Id" SelectedValueBinding="{Binding Userid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=UsersList}" />
+        <DataGridTextColumn Header="Sessionid" MinWidth="100" Binding="{Binding Path=Sessionid, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Speed" MinWidth="100" Binding="{Binding Path=Speed, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Nplatf" MinWidth="100" Binding="{Binding Path=Nplatf, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridComboBoxColumn Header="Lineid" MinWidth="100" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValueBinding="{Binding Lineid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=LinesList}" />
+        <DataGridComboBoxColumn Header="Tvagonid" MinWidth="100" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValueBinding="{Binding Tvagonid, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource myStaticDataProvider}, Path=TwagonList}" />
+        <DataGridTextColumn Header="Vid1" MinWidth="100" Binding="{Binding Path=Vid1, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Vid2" MinWidth="100" Binding="{Binding Path=Vid2, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Vid3" MinWidth="100" Binding="{Binding Path=Vid3, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Pr1" MinWidth="100" Binding="{Binding Path=Pr1, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Pr2" MinWidth="100" Binding="{Binding Path=Pr2, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Pr3" MinWidth="100" Binding="{Binding Path=Pr3, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+      </DataGrid.Columns>
+    </DataGrid>
+    <ScrollViewer Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch">
+      <Grid Margin="10,0,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="150" />
+          <ColumnDefinition Width="180" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="35" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Search Filter [wildcard '%']" FontSize="14" Foreground="DimGray" HorizontalAlignment="Left" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Id" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Id, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="IdTxtBx" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Number" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Number, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="NumberTxtBx" />
+        <Label Grid.Row="3" Grid.Column="0" Content="Doctara" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Doctara, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="DoctaraTxtBx" />
+        <Label Grid.Row="4" Grid.Column="0" Content="Docbrutto" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=Docbrutto, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="DocbruttoTxtBx" />
+        <Label Grid.Row="5" Grid.Column="0" Content="Docnetto" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Docnetto, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="DocnettoTxtBx" />
+        <Label Grid.Row="6" Grid.Column="0" Content="Weightcount" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=Weightcount, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="WeightcountTxtBx" />
+        <Label Grid.Row="7" Grid.Column="0" Content="W1time" />
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=W1time, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W1timeTxtBx" />
+        <Label Grid.Row="8" Grid.Column="0" Content="W1result" />
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=W1result, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W1resultTxtBx" />
+        <Label Grid.Row="9" Grid.Column="0" Content="W1tara" />
+        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Path=W1tara, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W1taraTxtBx" />
+        <Label Grid.Row="10" Grid.Column="0" Content="W1brutto" />
+        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Path=W1brutto, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W1bruttoTxtBx" />
+        <Label Grid.Row="11" Grid.Column="0" Content="W1netto" />
+        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Path=W1netto, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W1nettoTxtBx" />
+        <Label Grid.Row="12" Grid.Column="0" Content="W1scale" />
+        <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding Path=W1scale, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W1scaleTxtBx" />
+        <Label Grid.Row="13" Grid.Column="0" Content="W2time" />
+        <TextBox Grid.Row="13" Grid.Column="1" Text="{Binding Path=W2time, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W2timeTxtBx" />
+        <Label Grid.Row="14" Grid.Column="0" Content="W2result" />
+        <TextBox Grid.Row="14" Grid.Column="1" Text="{Binding Path=W2result, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W2resultTxtBx" />
+        <Label Grid.Row="15" Grid.Column="0" Content="W2tara" />
+        <TextBox Grid.Row="15" Grid.Column="1" Text="{Binding Path=W2tara, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W2taraTxtBx" />
+        <Label Grid.Row="16" Grid.Column="0" Content="W2brutto" />
+        <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding Path=W2brutto, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W2bruttoTxtBx" />
+        <Label Grid.Row="17" Grid.Column="0" Content="W2netto" />
+        <TextBox Grid.Row="17" Grid.Column="1" Text="{Binding Path=W2netto, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W2nettoTxtBx" />
+        <Label Grid.Row="18" Grid.Column="0" Content="W2scale" />
+        <TextBox Grid.Row="18" Grid.Column="1" Text="{Binding Path=W2scale, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="W2scaleTxtBx" />
+        <Label Grid.Row="19" Grid.Column="0" Content="Session" />
+        <TextBox Grid.Row="19" Grid.Column="1" Text="{Binding Path=Session, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="SessionTxtBx" />
+        <Label Grid.Row="20" Grid.Column="0" Content="Receiverid" />
+        <TextBox Grid.Row="20" Grid.Column="1" Text="{Binding Path=Receiverid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="ReceiveridTxtBx" />
+        <Label Grid.Row="21" Grid.Column="0" Content="Senderid" />
+        <TextBox Grid.Row="21" Grid.Column="1" Text="{Binding Path=Senderid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="SenderidTxtBx" />
+        <Label Grid.Row="22" Grid.Column="0" Content="Productid" />
+        <TextBox Grid.Row="22" Grid.Column="1" Text="{Binding Path=Productid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="ProductidTxtBx" />
+        <Label Grid.Row="23" Grid.Column="0" Content="Operationid" />
+        <TextBox Grid.Row="23" Grid.Column="1" Text="{Binding Path=Operationid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="OperationidTxtBx" />
+        <Label Grid.Row="24" Grid.Column="0" Content="Lotnumber" />
+        <TextBox Grid.Row="24" Grid.Column="1" Text="{Binding Path=Lotnumber, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="LotnumberTxtBx" />
+        <Label Grid.Row="25" Grid.Column="0" Content="Trailid" />
+        <TextBox Grid.Row="25" Grid.Column="1" Text="{Binding Path=Trailid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="TrailidTxtBx" />
+        <Label Grid.Row="26" Grid.Column="0" Content="Minesid" />
+        <TextBox Grid.Row="26" Grid.Column="1" Text="{Binding Path=Minesid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="MinesidTxtBx" />
+        <Label Grid.Row="27" Grid.Column="0" Content="Zagrnumber" />
+        <TextBox Grid.Row="27" Grid.Column="1" Text="{Binding Path=Zagrnumber, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="ZagrnumberTxtBx" />
+        <Label Grid.Row="28" Grid.Column="0" Content="Returnid" />
+        <TextBox Grid.Row="28" Grid.Column="1" Text="{Binding Path=Returnid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="ReturnidTxtBx" />
+        <Label Grid.Row="29" Grid.Column="0" Content="Userid" />
+        <TextBox Grid.Row="29" Grid.Column="1" Text="{Binding Path=Userid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="UseridTxtBx" />
+        <Label Grid.Row="30" Grid.Column="0" Content="Sessionid" />
+        <TextBox Grid.Row="30" Grid.Column="1" Text="{Binding Path=Sessionid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="SessionidTxtBx" />
+        <Label Grid.Row="31" Grid.Column="0" Content="Speed" />
+        <TextBox Grid.Row="31" Grid.Column="1" Text="{Binding Path=Speed, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="SpeedTxtBx" />
+        <Label Grid.Row="32" Grid.Column="0" Content="Nplatf" />
+        <TextBox Grid.Row="32" Grid.Column="1" Text="{Binding Path=Nplatf, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="NplatfTxtBx" />
+        <Label Grid.Row="33" Grid.Column="0" Content="Lineid" />
+        <TextBox Grid.Row="33" Grid.Column="1" Text="{Binding Path=Lineid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="LineidTxtBx" />
+        <Label Grid.Row="34" Grid.Column="0" Content="Tvagonid" />
+        <TextBox Grid.Row="34" Grid.Column="1" Text="{Binding Path=Tvagonid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="TvagonidTxtBx" />
+        <Label Grid.Row="35" Grid.Column="0" Content="Pr1" />
+        <TextBox Grid.Row="35" Grid.Column="1" Text="{Binding Path=Pr1, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="Pr1TxtBx" />
+        <Label Grid.Row="36" Grid.Column="0" Content="Pr2" />
+        <TextBox Grid.Row="36" Grid.Column="1" Text="{Binding Path=Pr2, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="Pr2TxtBx" />
+        <Label Grid.Row="37" Grid.Column="0" Content="Pr3" />
+        <TextBox Grid.Row="37" Grid.Column="1" Text="{Binding Path=Pr3, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="Pr3TxtBx" />
+        <Button Grid.Row="38" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Load from database" Width="150" x:Name="resultsBtn" />
+      </Grid>
+    </ScrollViewer>
+    <Button Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Save changes to database" Width="150" x:Name="updateBtn" />
+  </Grid>
+</UserControl>

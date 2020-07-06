@@ -1,0 +1,81 @@
+<UserControl x:Class="Awsd5.ClassicSample.ProducttypesCtrl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:local="clr-namespace:Awsd5.ClassicSample">
+  <UserControl.Resources>
+    <Style x:Key="PrimaryKeyElementStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="Padding" Value="4,4,2,4" />
+      <Setter Property="Background" Value="LightYellow" />
+      <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style x:Key="NonEditablePrimaryKeyElementStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="Padding" Value="4,4,2,4" />
+      <Setter Property="Background" Value="Gray" />
+      <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style x:Key="EditableElementStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="Padding" Value="4,4,2,4" />
+      <Setter Property="Background" Value="White" />
+      <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style x:Key="EditingElementStyle" TargetType="{x:Type TextBox}">
+      <Setter Property="Margin" Value="0,1,0,0" />
+      <Setter Property="Background" Value="White" />
+      <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style x:Key="CustomLabelButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" />
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <local:StaticDataProvider x:Key="myStaticDataProvider" ObjectType="{x:Type local:StaticBindings.StaticBindings}" PropertyName="Instance" />
+  </UserControl.Resources>
+  <Grid Margin="0,0,0,10">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="360" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="35" />
+      <RowDefinition Height="25" />
+      <RowDefinition />
+      <RowDefinition Height="30" />
+    </Grid.RowDefinitions>
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Content="Producttypes" />
+    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Search results" FontSize="14" Foreground="DimGray" HorizontalAlignment="Left" />
+    <DataGrid x:Name="gridView1" Grid.Row="2" Grid.Column="0" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Results}" Background="White" HorizontalGridLinesBrush="Silver" VerticalGridLinesBrush="Silver" Margin="4,4,4,4" Padding="4,0,4,4" RowHeaderWidth="0">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Id" MinWidth="100" Binding="{Binding Path=Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" ElementStyle="{StaticResource NonEditablePrimaryKeyElementStyle}" />
+        <DataGridTextColumn Header="Name" MinWidth="100" Binding="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+        <DataGridTextColumn Header="Externalid" MinWidth="100" Binding="{Binding Path=Externalid, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource EditableElementStyle}" EditingElementStyle="{StaticResource EditingElementStyle}" />
+      </DataGrid.Columns>
+    </DataGrid>
+    <ScrollViewer Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch">
+      <Grid Margin="10,0,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="150" />
+          <ColumnDefinition Width="180" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="35" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+          <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Search Filter [wildcard '%']" FontSize="14" Foreground="DimGray" HorizontalAlignment="Left" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Id" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Id, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="IdTxtBx" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Name" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Name, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="NameTxtBx" />
+        <Label Grid.Row="3" Grid.Column="0" Content="Externalid" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Externalid, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="2,2,2,2" x:Name="ExternalidTxtBx" />
+        <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Load from database" Width="150" x:Name="resultsBtn" />
+      </Grid>
+    </ScrollViewer>
+    <Button Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Save changes to database" Width="150" x:Name="updateBtn" />
+  </Grid>
+</UserControl>

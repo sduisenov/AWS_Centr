@@ -1,0 +1,56 @@
+<Window x:Class="Awsd5.ClassicSample.MainFrame" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Awsd5.ClassicSample" Title="Code Trigger Sample WPF Client" Height="550" Width="720">
+  <Grid Background="LightGray">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Label Grid.Row="0" Content="CodeTrigger Sample - WPF Client" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
+    <TabControl Grid.Row="1" x:Name="_tabCtrl">
+      <TabItem Header="Containers" HorizontalContentAlignment="Stretch">
+        <local:ContainersCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_ContainersCtrl" />
+      </TabItem>
+      <TabItem Header="Lines" HorizontalContentAlignment="Stretch">
+        <local:LinesCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_LinesCtrl" />
+      </TabItem>
+      <TabItem Header="Logtables" HorizontalContentAlignment="Stretch">
+        <local:LogtablesCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_LogtablesCtrl" />
+      </TabItem>
+      <TabItem Header="Mines" HorizontalContentAlignment="Stretch">
+        <local:MinesCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_MinesCtrl" />
+      </TabItem>
+      <TabItem Header="Operations" HorizontalContentAlignment="Stretch">
+        <local:OperationsCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_OperationsCtrl" />
+      </TabItem>
+      <TabItem Header="Products" HorizontalContentAlignment="Stretch">
+        <local:ProductsCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_ProductsCtrl" />
+      </TabItem>
+      <TabItem Header="Producttypes" HorizontalContentAlignment="Stretch">
+        <local:ProducttypesCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_ProducttypesCtrl" />
+      </TabItem>
+      <TabItem Header="Recievers" HorizontalContentAlignment="Stretch">
+        <local:RecieversCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_RecieversCtrl" />
+      </TabItem>
+      <TabItem Header="Rreturn" HorizontalContentAlignment="Stretch">
+        <local:RreturnCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_RreturnCtrl" />
+      </TabItem>
+      <TabItem Header="Senders" HorizontalContentAlignment="Stretch">
+        <local:SendersCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_SendersCtrl" />
+      </TabItem>
+      <TabItem Header="Sessions" HorizontalContentAlignment="Stretch">
+        <local:SessionsCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_SessionsCtrl" />
+      </TabItem>
+      <TabItem Header="Trail" HorizontalContentAlignment="Stretch">
+        <local:TrailCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_TrailCtrl" />
+      </TabItem>
+      <TabItem Header="Twagon" HorizontalContentAlignment="Stretch">
+        <local:TwagonCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_TwagonCtrl" />
+      </TabItem>
+      <TabItem Header="Users" HorizontalContentAlignment="Stretch">
+        <local:UsersCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_UsersCtrl" />
+      </TabItem>
+      <TabItem Header="Usertypes" HorizontalContentAlignment="Stretch">
+        <local:UsertypesCtrl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="_UsertypesCtrl" />
+      </TabItem>
+    </TabControl>
+  </Grid>
+</Window>
